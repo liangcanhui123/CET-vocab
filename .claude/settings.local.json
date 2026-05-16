@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash(node gen-extra2.js)",
+      "Bash(node -e \"var m=require\\('./words-extra5'\\); console.log\\('words-extra5.js: '+m.length+' words'\\);\")",
+      "Bash(node gen-all.js)"
+    ]
+  }
+}

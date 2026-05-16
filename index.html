@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="四六级英语词根背诵 - 通过词根词缀高效记忆英语单词"
+    />
+    <title>CET 词根背诵 | 四六级英语词根</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="header-title">
+          <span class="logo-icon">📚</span>
+          CET 词根背诵
+        </div>
+        <div class="header-stats" id="statsBar"></div>
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="搜索词根、单词或中文释义..."
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn cet4" data-filter="cet-4">CET-4</button>
+        <button class="filter-btn cet6" data-filter="cet-6">CET-6</button>
+        <span
+          style="
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            line-height: 2;
+            margin: 0 4px;
+          "
+          >|</span
+        >
+        <button class="category-tag active" data-category="all">
+          全部类别
+        </button>
+        <button class="category-tag" data-category="动作">动作</button>
+        <button class="category-tag" data-category="思维">思维</button>
+        <button class="category-tag" data-category="感官">感官</button>
+        <button class="category-tag" data-category="交流">交流</button>
+        <button class="category-tag" data-category="生命">生命</button>
+        <button class="category-tag" data-category="评价">评价</button>
+        <button class="category-tag" data-category="社会">社会</button>
+        <button class="category-tag" data-category="性质">性质</button>
+        <button class="category-tag" data-category="科学">科学</button>
+        <button class="category-tag" data-category="自然">自然</button>
+        <button class="category-tag" data-category="数量">数量</button>
+        <button class="category-tag" data-category="身体">身体</button>
+        <button class="category-tag" data-category="前缀">前缀</button>
+        <button class="category-tag" data-category="后缀">后缀</button>
+        <button
+          class="study-btn outline"
+          id="studyAllBtn"
+          style="margin-left: auto"
+        >
+          📖 背当前全部
+        </button>
+        <button class="bookmark-nav-btn" id="bookmarkNavBtn">📑 收藏夹</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="roots-grid" id="rootsGrid"></div>
+    </main>
+
+    <!-- Flashcard Modal -->
+    <div class="modal-overlay" id="flashcardModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">背单词</h2>
+          <button class="modal-close" id="modalClose">&times;</button>
+        </div>
+        <div class="flashcard-container">
+          <div class="flashcard" id="flashcard">
+            <div class="flashcard-face flashcard-front">
+              <div class="card-word" id="cardWord">word</div>
+              <div class="card-hint" id="cardHint">点击翻转查看释义</div>
+            </div>
+            <div class="flashcard-face flashcard-back">
+              <div class="card-meaning" id="cardMeaning">释义</div>
+              <div class="card-root" id="cardRoot">词根</div>
+              <div class="card-level" id="cardLevel">CET-4</div>
+            </div>
+          </div>
+        </div>
+        <div class="flashcard-controls">
+          <button class="flashcard-btn" id="prevBtn">← 上一个</button>
+          <button class="flashcard-btn primary" id="flipBtn">翻转</button>
+          <button class="flashcard-btn" id="nextBtn">下一个 →</button>
+        </div>
+        <div class="flashcard-controls" style="margin-top: 8px">
+          <button class="flashcard-btn" id="shuffleBtn">🔀 随机顺序</button>
+        </div>
+        <div class="flashcard-progress" id="flashcardProgress">0 / 0</div>
+      </div>
+    </div>
+
+    <!-- Word Detail Modal -->
+    <div class="modal-overlay" id="wordModal">
+      <div class="modal-content word-modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">单词详情</h2>
+          <button class="modal-close" id="wordModalClose">&times;</button>
+        </div>
+        <div class="word-detail-card">
+          <div class="wd-word" id="wdWord">word</div>
+          <div class="wd-meaning" id="wdMeaning">释义</div>
+          <div class="wd-level" id="wdLevel">CET-4</div>
+          <div class="wd-sentence" id="wdSentence">
+            <div class="wd-sentence-label">例句</div>
+            <div class="wd-sentence-en" id="wdSentenceEn">...</div>
+            <div class="wd-sentence-zh" id="wdSentenceZh">...</div>
+          </div>
+          <div class="wd-root" id="wdRoot">词根: xxx</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data-1.js"></script>
+    <script src="js/data-2.js"></script>
+    <script src="js/data-3.js"></script>
+    <script src="js/data-general-1.js"></script>
+    <script src="js/data-general-2.js"></script>
+    <script src="js/data-general-3.js"></script>
+    <script src="js/data-general-4.js"></script>
+    <script src="js/data-general-5.js"></script>
+    <script src="js/data-general-6.js"></script>
+    <script src="js/data-general-7.js"></script>
+    <script src="js/data-general-8.js"></script>
+    <script src="js/data-general-9.js"></script>
+    <script src="js/data-general-10.js"></script>
+    <script src="js/data-general-11.js"></script>
+    <script src="js/data-general-12.js"></script>
+    <script src="js/data-general-13.js"></script>
+    <script src="js/data-general-14.js"></script>
+    <script src="js/data-general-15.js"></script>
+    <script src="js/data-general-16.js"></script>
+    <script src="js/data-general-17.js"></script>
+    <script src="js/data-general-18.js"></script>
+    <script src="js/data-general-19.js"></script>
+    <script src="js/data-general-20.js"></script>
+    <script src="js/data-general-21.js"></script>
+    <script src="js/data-general-22.js"></script>
+    <script src="js/data-general-23.js"></script>
+    <script src="js/data-general-24.js"></script>
+    <script src="js/data-general-25.js"></script>
+    <script src="js/data-general-26.js"></script>
+    <script src="js/data-general-27.js"></script>
+    <script src="js/data-general-28.js"></script>
+    <script src="js/data-general-29.js"></script>
+    <script src="js/data-general-30.js"></script>
+    <script src="js/data-general-31.js"></script>
+    <script src="js/data-general-32.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/sentences.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
